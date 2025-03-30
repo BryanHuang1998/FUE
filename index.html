@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>富邑科技</title>
+    <title>富邑科技 - 聯絡我們</title>
     <style>
         /* 機器視覺風格主題 */
         :root {
@@ -89,44 +89,70 @@
             width: 100%;
         }
         
-        .hero {
-            height: 70vh;
+        .contact-container {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background-color: rgba(0, 51, 102, 0.3);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+        
+        .company-info {
+            width: 300px;
+            background-color: rgba(0, 51, 102, 0.3);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 204, 255, 0.3);
+            border-radius: 4px;
+            color: var(--light-color);
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .checkbox-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            margin-right: 1rem;
         }
         
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, transparent 0%, var(--dark-color) 70%);
-            z-index: 1;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 2rem;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--accent-color);
-            text-shadow: 0 0 15px rgba(0, 204, 255, 0.7);
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+        .checkbox-item input {
+            margin-right: 0.5rem;
         }
         
         .btn {
@@ -138,6 +164,8 @@
             border-radius: 4px;
             transition: all 0.3s ease;
             border: 1px solid var(--accent-color);
+            cursor: pointer;
+            font-size: 1rem;
         }
         
         .btn:hover {
@@ -146,58 +174,86 @@
             box-shadow: 0 0 15px var(--accent-color);
         }
         
-        .online-help {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 99;
+        .process-flow {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: rgba(0, 51, 102, 0.2);
+            border-radius: 8px;
         }
         
-        .help-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            text-decoration: none;
-            box-shadow: 0 0 15px rgba(0, 204, 255, 0.5);
-            transition: all 0.3s ease;
-            font-weight: bold;
-            font-size: 0.9rem;
+        .process-title {
             text-align: center;
-            border: 2px solid var(--accent-color);
-        }
-        
-        .help-btn:hover {
-            background-color: var(--accent-color);
-            color: var(--dark-color);
-            transform: scale(1.1);
-            box-shadow: 0 0 20px var(--accent-color);
-        }
-        
-        section {
-            padding: 4rem 0;
-            border-bottom: 1px solid rgba(0, 204, 255, 0.2);
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
             color: var(--accent-color);
-            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
             position: relative;
         }
         
-        .section-title::after {
+        .process-steps::before {
             content: '';
-            display: block;
-            width: 80px;
-            height: 3px;
-            background-color: var(--accent-color);
-            margin: 1rem auto;
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, 
+                          var(--accent-color), 
+                          var(--primary-color));
+            z-index: 1;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            width: 16%;
+        }
+        
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--dark-color);
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .step-name {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+        }
+        
+        .company-info h3 {
+            color: var(--accent-color);
+            margin-top: 0;
+            border-bottom: 1px solid rgba(0, 204, 255, 0.3);
+            padding-bottom: 0.5rem;
+        }
+        
+        .company-info p {
+            margin: 0.8rem 0;
+        }
+        
+        .map-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .map-link:hover {
+            text-decoration: underline;
+            color: var(--primary-color);
         }
         
         footer {
@@ -205,48 +261,12 @@
             padding: 2rem 0;
             text-align: center;
             border-top: 1px solid var(--accent-color);
+            margin-top: 3rem;
         }
         
         .footer-info {
             margin-bottom: 1rem;
             line-height: 1.8;
-        }
-        
-        /* 核心理念樣式 */
-        .core-concept {
-            background-color: rgba(0, 51, 102, 0.3);
-            padding: 2rem;
-            border-radius: 8px;
-            margin-top: 2rem;
-            border-left: 4px solid var(--accent-color);
-        }
-        
-        .core-concept h3 {
-            color: var(--accent-color);
-            margin-top: 0;
-        }
-        
-        /* 產品子欄位樣式 */
-        .product-categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .product-category {
-            background-color: rgba(0, 51, 102, 0.2);
-            padding: 1.5rem;
-            border-radius: 6px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 204, 255, 0.2);
-        }
-        
-        .product-category:hover {
-            background-color: rgba(0, 51, 102, 0.4);
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 204, 255, 0.2);
         }
         
         /* 機器視覺特效元素 */
@@ -313,84 +333,151 @@
         </div>
     </header>
     
-    <section class="hero">
-        <div class="vision-grid" id="visionGrid"></div>
-        <div class="scan-line"></div>
-        <div class="data-points" id="dataPoints"></div>
-        
-        <div class="hero-content">
-            <h1>機器視覺解決方案</h1>
-            <p>先進的視覺檢測技術，為您的生產線提供智能化的品質控制</p>
-            <a href="#contact" class="btn">開始合作</a>
-        </div>
-    </section>
-    
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">關於我們</h2>
-            <p>富邑科技創立於2016年，有著15年以上機器視覺經驗的團隊，具備深厚且豐富的專業知識，一路上更是不斷精益求精，與時俱進，使得富邑逐漸在業界市場上露出鋒芒。</p>
-            <p>位居新竹、近科學園區，身處市場更能了解市場需求，提供客戶性能、品質、CP值三者兼顧的光學解決方案，成為供應商與客戶間信賴的好夥伴。</p>
-            
-            <div class="core-concept">
-                <h3>核心理念</h3>
-                <p>成為供應商、客戶間的橋梁共同成長，成為機器視覺產業的長青樹。</p>
-                <p>取得正確的市場潛力 / 即時的資訊，同時也可為下一代的商品的精準度作調整，以達成市場佔有率的提升。富邑在原廠/客戶不斷成長的過程中，在資源不斷的挹注之下，成為雙方的信賴夥伴，並將企業資源作最好的資源配置。成為供應商、客戶間的橋梁共同成長，成為機器視覺產業的長青樹。</p>
-            </div>
-        </div>
-    </section>
-    
-    <section id="products">
-        <div class="container">
-            <h2 class="section-title">產品介紹</h2>
-            <p>我們的產品線包括高精度工業相機、智能視覺軟體和完整的檢測系統，適用於各種工業應用場景。</p>
-            
-            <div class="product-categories">
-                <div class="product-category">
-                    <h3>工業相機</h3>
-                </div>
-                <div class="product-category">
-                    <h3>智能相機</h3>
-                </div>
-                <div class="product-category">
-                    <h3>讀碼器</h3>
-                </div>
-                <div class="product-category">
-                    <h3>立體相機</h3>
-                </div>
-                <div class="product-category">
-                    <h3>工業鏡頭</h3>
-                </div>
-                <div class="product-category">
-                    <h3>工業遠心鏡頭</h3>
-                </div>
-                <div class="product-category">
-                    <h3>工業光源</h3>
-                </div>
-                <div class="product-category">
-                    <h3>擷取卡</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="solutions">
-        <div class="container">
-            <h2 class="section-title">解決方案</h2>
-            <p>針對不同行業的特殊需求，我們提供定制化的視覺解決方案，包括自動化檢測、機器人引導和測量分析等。</p>
-        </div>
-    </section>
-    
-    <section id="partners">
-        <div class="container">
-            <h2 class="section-title">合作夥伴</h2>
-            <!-- 合作夥伴內容將在此添加 -->
-        </div>
-    </section>
-    
     <section id="contact">
         <div class="container">
             <h2 class="section-title">聯絡我們</h2>
-            <p>如果您有任何問題或需求，請隨時與我們聯繫，我們的專業團隊將為您提供最佳的服務。</p>
+            
+            <div class="contact-container">
+                <div class="contact-form">
+                    <div class="process-flow">
+                        <h3 class="process-title">評估規劃流程</h3>
+                        <div class="process-steps">
+                            <div class="process-step">
+                                <div class="step-icon">1</div>
+                                <div class="step-name">需求蒐集</div>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-icon">2</div>
+                                <div class="step-name">光學評估</div>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-icon">3</div>
+                                <div class="step-name">產品借測</div>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-icon">4</div>
+                                <div class="step-name">使用問答</div>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-icon">5</div>
+                                <div class="step-name">報價訂單</div>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-icon">6</div>
+                                <div class="step-name">交付供貨</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form id="inquiryForm">
+                        <div class="form-group">
+                            <label for="product-category">詢問產品類別 ?</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="industrial-camera" name="product-category" value="工業相機">
+                                    <label for="industrial-camera">工業相機</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="smart-camera" name="product-category" value="智能相機">
+                                    <label for="smart-camera">智能相機</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="barcode-reader" name="product-category" value="讀碼器">
+                                    <label for="barcode-reader">讀碼器</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="stereo-camera" name="product-category" value="立體相機">
+                                    <label for="stereo-camera">立體相機</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="industrial-lens" name="product-category" value="工業鏡頭">
+                                    <label for="industrial-lens">工業鏡頭</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="telecentric-lens" name="product-category" value="工業遠心鏡頭">
+                                    <label for="telecentric-lens">工業遠心鏡頭</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="light-source" name="product-category" value="工業光源">
+                                    <label for="light-source">工業光源</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="capture-card" name="product-category" value="擷取卡">
+                                    <label for="capture-card">擷取卡</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service-type">需要的服務?</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="price-inquiry" name="service-type" value="詢問產品價格">
+                                    <label for="price-inquiry">詢問產品價格</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="product-test" name="service-type" value="申請產品借測">
+                                    <label for="product-test">申請產品借測</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="application-evaluation" name="service-type" value="討論應用評估">
+                                    <label for="application-evaluation">討論應用評估</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="other-service" name="service-type" value="其他">
+                                    <label for="other-service">其他</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="problem-description">請在下方詳細描述您的應用問題:</label>
+                            <textarea id="problem-description" name="problem-description" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company-name">公司名稱</label>
+                            <input type="text" id="company-name" name="company-name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-name">姓名</label>
+                            <input type="text" id="contact-name" name="contact-name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">電話</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <button type="submit" class="btn">提交詢問</button>
+                    </form>
+                </div>
+                
+                <div class="company-info">
+                    <h3>富邑科技有限公司</h3>
+                    <p><strong>電話：</strong>03-5959300</p>
+                    <p><strong>傳真：</strong>03-5959400</p>
+                    <p><strong>統一編號：</strong>45128880</p>
+                    <p><strong>E-MAIL：</strong>service.forwin1@gmail.com</p>
+                    <p><strong>地址：</strong>310新竹縣竹東鎮北興路三段523號</p>
+                    <p><strong>營業時間：</strong><br>
+                        08:30~17:30<br>
+                        午休12:00~13:30<br>
+                        週休六日</p>
+                    
+                    <a href="https://www.google.com/maps/place/310%E6%96%B0%E7%AB%B9%E7%B8%A3%E7%AB%B9%E6%9D%B1%E9%8E%AE%E5%8C%97%E8%88%88%E8%B7%AF%E4%B8%89%E6%AE%B5523%E8%99%9F/@24.747258,121.073583,17z/data=!3m1!4b1!4m6!3m5!1s0x34683f1e3f7e5a3f:0x5e7a1a5e3b3b3b3b!8m2!3d24.747258!4d121.073583!16s%2Fg%2F11b8z8z8z8?entry=ttu" 
+                       class="map-link" 
+                       target="_blank">
+                        📍 在Google地圖上查看
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
     
@@ -409,7 +496,10 @@
     
     <script>
         // 創建數據點特效
-        const dataPoints = document.getElementById('dataPoints');
+        const dataPoints = document.createElement('div');
+        dataPoints.className = 'data-points';
+        document.body.appendChild(dataPoints);
+        
         for (let i = 0; i < 50; i++) {
             const point = document.createElement('div');
             point.className = 'data-point';
@@ -424,7 +514,10 @@
         }
         
         // 創建網格線
-        const visionGrid = document.getElementById('visionGrid');
+        const visionGrid = document.createElement('div');
+        visionGrid.className = 'vision-grid';
+        document.body.appendChild(visionGrid);
+        
         for (let i = 0; i < 20; i++) {
             const lineH = document.createElement('div');
             lineH.style.position = 'absolute';
@@ -444,6 +537,13 @@
             lineV.style.backgroundColor = 'rgba(0, 204, 255, 0.1)';
             visionGrid.appendChild(lineV);
         }
+        
+        // 表單提交處理
+        document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('感謝您的詢問！我們將盡快與您聯繫。');
+            this.reset();
+        });
     </script>
 </body>
 </html>
