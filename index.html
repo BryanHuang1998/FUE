@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>富邑科技</title>
+    <style>
+        /* 機器視覺風格主題 */
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #003366;
+            --accent-color: #00ccff;
+            --dark-color: #1a1a1a;
+            --light-color: #f0f0f0;
+            --grid-color: rgba(0, 204, 255, 0.1);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 20px 20px;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 1rem;
+            border-bottom: 1px solid var(--accent-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px rgba(0, 204, 255, 0.5);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, transparent 0%, var(--dark-color) 70%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            text-shadow: 0 0 15px rgba(0, 204, 255, 0.7);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--accent-color);
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+        
+        .online-help {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 99;
+        }
+        
+        .help-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            box-shadow: 0 0 15px rgba(0, 204, 255, 0.5);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-align: center;
+            border: 2px solid var(--accent-color);
+        }
+        
+        .help-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px var(--accent-color);
+        }
+        
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid rgba(0, 204, 255, 0.2);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-color);
+            font-size: 2rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 1rem auto;
+        }
+        
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--accent-color);
+        }
+        
+        .footer-info {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        /* 核心理念樣式 */
+        .core-concept {
+            background-color: rgba(0, 51, 102, 0.3);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .core-concept h3 {
+            color: var(--accent-color);
+            margin-top: 0;
+        }
+        
+        /* 產品子欄位樣式 */
+        .product-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .product-category {
+            background-color: rgba(0, 51, 102, 0.2);
+            padding: 1.5rem;
+            border-radius: 6px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 204, 255, 0.2);
+        }
+        
+        .product-category:hover {
+            background-color: rgba(0, 51, 102, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 204, 255, 0.2);
+        }
+        
+        /* 機器視覺特效元素 */
+        .vision-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+        
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to bottom, 
+                          transparent, 
+                          var(--accent-color), 
+                          transparent);
+            animation: scan 8s linear infinite;
+            opacity: 0.3;
+        }
+        
+        @keyframes scan {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+        
+        .data-points {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        
+        .data-point {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">富邑科技</div>
+                <div class="nav-links">
+                    <a href="#about">關於我們</a>
+                    <a href="#products">產品介紹</a>
+                    <a href="#solutions">解決方案</a>
+                    <a href="#partners">合作夥伴</a>
+                    <a href="#contact">聯絡我們</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="vision-grid" id="visionGrid"></div>
+        <div class="scan-line"></div>
+        <div class="data-points" id="dataPoints"></div>
+        
+        <div class="hero-content">
+            <h1>機器視覺解決方案</h1>
+            <p>先進的視覺檢測技術，為您的生產線提供智能化的品質控制</p>
+            <a href="#contact" class="btn">開始合作</a>
+        </div>
+    </section>
+    
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">關於我們</h2>
+            <p>富邑科技創立於2016年，有著15年以上機器視覺經驗的團隊，具備深厚且豐富的專業知識，一路上更是不斷精益求精，與時俱進，使得富邑逐漸在業界市場上露出鋒芒。</p>
+            <p>位居新竹、近科學園區，身處市場更能了解市場需求，提供客戶性能、品質、CP值三者兼顧的光學解決方案，成為供應商與客戶間信賴的好夥伴。</p>
+            
+            <div class="core-concept">
+                <h3>核心理念</h3>
+                <p>成為供應商、客戶間的橋梁共同成長，成為機器視覺產業的長青樹。</p>
+                <p>取得正確的市場潛力 / 即時的資訊，同時也可為下一代的商品的精準度作調整，以達成市場佔有率的提升。富邑在原廠/客戶不斷成長的過程中，在資源不斷的挹注之下，成為雙方的信賴夥伴，並將企業資源作最好的資源配置。成為供應商、客戶間的橋梁共同成長，成為機器視覺產業的長青樹。</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="products">
+        <div class="container">
+            <h2 class="section-title">產品介紹</h2>
+            <p>我們的產品線包括高精度工業相機、智能視覺軟體和完整的檢測系統，適用於各種工業應用場景。</p>
+            
+            <div class="product-categories">
+                <div class="product-category">
+                    <h3>工業相機</h3>
+                </div>
+                <div class="product-category">
+                    <h3>智能相機</h3>
+                </div>
+                <div class="product-category">
+                    <h3>讀碼器</h3>
+                </div>
+                <div class="product-category">
+                    <h3>立體相機</h3>
+                </div>
+                <div class="product-category">
+                    <h3>工業鏡頭</h3>
+                </div>
+                <div class="product-category">
+                    <h3>工業遠心鏡頭</h3>
+                </div>
+                <div class="product-category">
+                    <h3>工業光源</h3>
+                </div>
+                <div class="product-category">
+                    <h3>擷取卡</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="solutions">
+        <div class="container">
+            <h2 class="section-title">解決方案</h2>
+            <p>針對不同行業的特殊需求，我們提供定制化的視覺解決方案，包括自動化檢測、機器人引導和測量分析等。</p>
+        </div>
+    </section>
+    
+    <section id="partners">
+        <div class="container">
+            <h2 class="section-title">合作夥伴</h2>
+            <!-- 合作夥伴內容將在此添加 -->
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">聯絡我們</h2>
+            <p>如果您有任何問題或需求，請隨時與我們聯繫，我們的專業團隊將為您提供最佳的服務。</p>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-info">
+                新竹總公司 | 地址：新竹縣竹東鎮北興路三段523號 | 電話：(03)595-9300 | 傳真：(03)595-9400 | E-MAIL：service.forwin1@gmail.com
+            </div>
+            <p>&copy; 2023 富邑科技. 版權所有.</p>
+        </div>
+    </footer>
+    
+    <div class="online-help">
+        <a href="#contact" class="help-btn">線上<br>詢問</a>
+    </div>
+    
+    <script>
+        // 創建數據點特效
+        const dataPoints = document.getElementById('dataPoints');
+        for (let i = 0; i < 50; i++) {
+            const point = document.createElement('div');
+            point.className = 'data-point';
+            point.style.left = `${Math.random() * 100}%`;
+            point.style.top = `${Math.random() * 100}%`;
+            point.style.width = `${Math.random() * 6 + 2}px`;
+            point.style.height = point.style.width;
+            point.style.opacity = Math.random() * 0.5 + 0.3;
+            point.style.animation = `pulse ${Math.random() * 3 + 2}s infinite alternate`;
+            
+            dataPoints.appendChild(point);
+        }
+        
+        // 創建網格線
+        const visionGrid = document.getElementById('visionGrid');
+        for (let i = 0; i < 20; i++) {
+            const lineH = document.createElement('div');
+            lineH.style.position = 'absolute';
+            lineH.style.left = '0';
+            lineH.style.top = `${i * 5}%`;
+            lineH.style.width = '100%';
+            lineH.style.height = '1px';
+            lineH.style.backgroundColor = 'rgba(0, 204, 255, 0.1)';
+            visionGrid.appendChild(lineH);
+            
+            const lineV = document.createElement('div');
+            lineV.style.position = 'absolute';
+            lineV.style.left = `${i * 5}%`;
+            lineV.style.top = '0';
+            lineV.style.width = '1px';
+            lineV.style.height = '100%';
+            lineV.style.backgroundColor = 'rgba(0, 204, 255, 0.1)';
+            visionGrid.appendChild(lineV);
+        }
+    </script>
+</body>
+</html>
